@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Estado de la Cuenta</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="css/preview.css" rel="stylesheet" />
+    <script src="js/modernizr.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
+<script language="JavaScript">
+<!--
+$(if advert-pending == 'yes')
+    var popup = '';
+    function focusAdvert() {
+	if (window.focus) popup.focus();
+    }
+    function openAdvert() {
+	popup = open('$(link-advert)', 'hotspot_advert', '');
+	setTimeout("focusAdvert()", 1000);
+    }
+$(endif)
+    function openLogout() {
+	if (window.name != 'hotspot_status') return true;
+        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+	window.close();
+	return false;
+    }
+//-->
+</script>
+<style type="text/css">
+body{
+	min-height: 100%;
+  overflow: hidden;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  position: relative;
+  background-image: url(../img/cano.jpg);
+  color: #fff;
+  font-size: 16px
+}
+</style>
+</head>
+<body class="eternity-form" bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0"
+$(if advert-pending == 'yes')
+	onLoad="openAdvert()"
+$(endif)
+>
+<section class="ColorBG">
+<table width="100%" height="100%">
+
+<tr>
+<td align="center" valign="middle">
+<form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+<table border="1" class="tabula">
+$(if login-by == 'trial')
+	<br><div style="text-align: center;">Bienvenido trial user!</div><br>
+$(elif login-by != 'mac')
+	<br><div style="text-align: center;">Bienvenido $(username)!</div><br>
+$(endif)
+	<tr><td align="right">Direccion IP:</td><td>$(ip)</td></tr>
+	<tr><td align="right">Consumo :</td><td>$(bytes-in-nice) / $(bytes-out-nice)</td></tr>
+$(if session-time-left)
+	<tr><td align="right">Tiempo conectado / Tiempo Restante:</td><td>$(uptime) / $(session-time-left)</td></tr>
+$(else)
+	<tr><td align="right">Tiempo Conectado:</td><td>$(uptime)</td></tr>
+$(endif)
+$(if blocked == 'yes')
+	<tr><td align="right">Estado:</td><td><div style="color: #FF8080">
+<a href="$(link-advert)" target="hotspot_advert">Publicidad</a> Requerida</div></td>
+$(elif refresh-timeout)
+	<tr><td align="right">Estado:</td><td>$(refresh-timeout)</td>
+$(endif)
+
+</table>
+$(if login-by-mac != 'yes')
+<br>
+<!-- user manager link. if user manager resides on other router, replace $(hostname) by its address
+<button onclick="document.location='http://$(hostname)/user?subs='; return false;">status</button>
+<! end of user manager link -->
+<input type="submit" value="log off">
+$(endif)
+</form>
+
+</td>
+</table>
+</section>
+</body>
+</html>

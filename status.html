@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Estado de la Cuenta</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <script language="JavaScript">
+    <!--
+    $(if advert-pending == 'yes')
+        var popup = '';
+        function focusAdvert() {
+    	if (window.focus) popup.focus();
+        }
+        function openAdvert() {
+    	popup = open('$(link-advert)', 'hotspot_advert', '');
+    	setTimeout("focusAdvert()", 1000);
+        }
+    $(endif)
+        function openLogout() {
+    	if (window.name != 'hotspot_status') return true;
+            open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+    	window.close();
+    	return false;
+        }
+    //-->
+    </script>
+    <style type="text/css">
+    h1,h4{
+      color:#ffF;
+      text-shadow: #000 2px 2px 2px;
+    }
+    .table-bordered > thead > tr > th,
+    .table-bordered > tbody > tr > th,
+    .table-bordered > tfoot > tr > th,
+    .table-bordered > thead > tr > td,
+    .table-bordered > tbody > tr > td,
+    .table-bordered > tfoot > tr > td {
+      border: 1px solid #dddddd;
+      background: #3498db;
+      color: #000;
+    }
+    </style>
+</head>
+<body class="eternity-form" bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0">
+  <!--$(if advert-pending == 'yes')
+  	onLoad="openAdvert()"
+  $(endif)-->
+  <section class="colorBg colorBg7 form-seprator nf">
+    <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+    <hgroup class="i8 ">
+      $(if login-by == 'trial')
+      <h3 data-animation="fadeInUp">Bienvenid@ Invitado</h3>
+      $(elif login-by != 'mac')
+      <h3 data-animation="fadeInUp">Bienvenid@ $(username)</h3>
+      $(endif)
+    </hgroup>
+    <br />
+    <div class=" container">
+      <div class="login-form-section">
+        <h4>Estado de Conexi&oacute;n</h4>
+        <table class="table table-bordered table-striped">
+          <tr>
+            <td>Direcci&oacute;n IP</td>
+            <td>$(ip)</td>
+          </tr>
+          <tr>
+            <td>Consumo</td>
+            <td>$(bytes-in-nice) / $(bytes-out-nice)</td>
+          </tr>
+          <tr>
+            <td>Tiempo Conectado</td>
+            <td>$(uptime)</td>
+          </tr>
+          <tr>
+            <td>Tiempo Restante</td>
+            <td>$(session-time-left)</td>
+          </tr>
+          $(if blocked == 'yes')
+          <tr>
+            <td>Estado:</td>
+            <td><a href="$(link-advert)" target="hotspot_advert">Publicidad</a> Requerida</td>
+          </tr>
+          $(elif refresh-timeout)
+          <tr>
+            <td>Estado:</td>
+            <td>$(refresh-timeout)</td>
+          </tr>
+          $(endif)
+        </table>
+        <div class="login-form-action clearfix">
+          <h1><a href="https://google.com.co">Ir A Google</a></h1>
+        </div>
+        <div class="login-form-action clearfix">
+          <button class="btn btn-default" type="submit">Cerrar Sesi&oacute;n</button>
+        </div>
+      </div>
+    </div>
+    $(endif)
+    </form>
+  </section>
+  <script src="js/jquery-1.9.1.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/respond.src.js"></script>
+  <script src="js/jquery.icheck.js"></script>
+  <script src="js/placeholders.min.js"></script>
+  <script src="js/waypoints.min.js"></script>
+  <script src="js/jquery.panelSnap.js"></script>
+  <script type="text/javascript">
+  $(function () {
+    $("input").iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      increaseArea: '20%' // optional
+    });
+    $(".dark input").iCheck({
+      checkboxClass: 'icheckbox_polaris',
+      increaseArea: '20%' // optional
+    });
+    $(".form-control").focus(function () {
+      $(this).closest(".textbox-wrap").addClass("focused");
+    }).blur(function () {
+      $(this).closest(".textbox-wrap").removeClass("focused");
+    });
+    //On Scroll Animations
+    if ($(window).width() >= 968 && !Modernizr.touch && Modernizr.cssanimations) {
+      $("body").addClass("scroll-animations-activated");
+      $('[data-animation-delay]').each(function () {
+        var animationDelay = $(this).data("animation-delay");
+        $(this).css({
+          "-webkit-animation-delay": animationDelay,
+          "-moz-animation-delay": animationDelay,
+          "-o-animation-delay": animationDelay,
+          "-ms-animation-delay": animationDelay,
+          "animation-delay": animationDelay
+        });
+      });
+      $('[data-animation]').waypoint(function (direction) {
+        if (direction == "down") {
+          $(this).addClass("animated " + $(this).data("animation"));
+        }
+      },
+      {
+        offset: '90%'
+      }).waypoint(function (direction) {
+        if (direction == "up") {
+          $(this).removeClass("animated " + $(this).data("animation"));
+        }
+      },
+      {
+        offset: $(window).height() + 1
+      });
+    }
+    //End On Scroll Animations
+    $(".main-nav a[href]").click(function () {
+      var scrollElm = $(this).attr("href");
+      $("html,body").animate({ scrollTop: $(scrollElm).offset().top }, 500);
+      $(".main-nav a[href]").removeClass("active");
+      $(this).addClass("active");
+    });
+    if ($(window).width() > 1000 && !Modernizr.touch) {
+      var options = {
+        $menu: ".main-nav",
+        menuSelector: 'a',
+        panelSelector: 'section',
+        namespace: '.panelSnap',
+        onSnapStart: function () { },
+        onSnapFinish: function ($target) {
+          $target.find('input:first').focus();
+        },
+        directionThreshold: 50,
+        slideSpeed: 200
+      };
+      $('body').panelSnap(options);
+    }
+    $(".colorBg a[href]").click(function () {
+      var scrollElm = $(this).attr("href");
+      $("html,body").animate({ scrollTop: $(scrollElm).offset().top }, 500);
+      return false;
+    });
+  });
+  </script>
+</body>
+</html>
