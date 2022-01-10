@@ -1,16 +1,67 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <title>Emertel</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="css/preview.css" rel="stylesheet" />
-    <script src="js/modernizr.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+<!-- W3hubs.com - Download Free Responsive Website Layout Templates designed on HTML5 
+   CSS3,Bootstrap,Tailwind CSS which are 100% Mobile friendly. w3Hubs all Layouts are responsive 
+   cross browser supported, best quality world class designs. -->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <title>Bootstrap 5 Login Form</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            font-family: "Nunito Sans";
+        }
+
+        .form-control {
+            line-height: 2;
+        }
+
+        .bg-custom {
+            background-color: #6C63FF;
+        }
+
+        .btn-custom {
+            background-color: #3e3d56;
+            color: #fff;
+        }
+
+        .btn-custom:hover {
+            background-color: #33313f;
+            color: #fff;
+        }
+
+        label {
+            color: #fff;
+        }
+
+        a,
+        a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a,
+        a:hover {
+            text-decoration: none;
+        }
+
+        @media(max-width: 932px) {
+            .display-none {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
-<body class="eternity-form">
-  $(if chap-id)
+
+<body>
+    $(if chap-id)
   <form name="sendin" action="$(link-login-only)" method="post">
     <input type="hidden" name="username" />
     <input type="hidden" name="password" />
@@ -29,140 +80,31 @@
   //-->
   </script>
   $(endif)
-  <section class="colorBg colorBg7 form-seprator nf">
-    <hgroup class="i8 ">
-      <h1 data-animation="fadeInUp" data-animation-delay=".2s">WiFiColombia</h1>
-      <h2 data-animation="fadeInUp" data-animation-delay=".5s">M&aacute;s tecnolog&iacute;a al precio justo</h2>
-      <h4 data-animation="fadeInUp" style="text-shadow: #000 0px 0px 2px" data-animation-delay=".5s">
-
-<a class="btn btn-success"
-      >
-        PARA VENTAS O SOPORTE
-      </a>
-
-      	<br> Por favor llame al telefono  <a href="tel:3330333200" style="color:#fff">333 0 333 200</a></h4>
-    </hgroup>
-    <br />
-    $(if trial == 'yes')
-    <h1 data-animation="bounceIn" data-animation-delay=".2s">
-      <a class="btn btn-success btn-lg btn-buy"
-      href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">
-        Para internet Gratis de click aqu&iacute;
-      </a>
-    </h1>
-    <br />
-    $(endif)
-    <div class=" container">
-      <div class="login-form-section">
-        <div class="login-content " data-animation="bounceIn">
-          <form name="login" action="$(link-login-only)" method="post"
-          $(if chap-id) onSubmit="return doLogin()" $(endif)>
-            <input type="hidden" name="dst" value="$(link-orig)" />
-            <input type="hidden" name="popup" value="true" />
-          <div class="section-title">
-            <h3>Ingresa tus datos de Acceso</h3>
-          </div>
-          <div class="textbox-wrap">
-            <div class="input-group">
-              <span class="input-group-addon "><i class="icon-user icon-color"></i></span>
-              <input required="required" class="form-control" placeholder="Username"
-              name="username" type="text" value="$(username)"/>
-            </div>
-          </div>
-          <div class="textbox-wrap">
-            <div class="input-group">
-              <span class="input-group-addon "><i class="icon-key icon-color"></i></span>
-              <input required="required" class="form-control " placeholder="Password"  name="password" type="password"/>
-            </div>
-          </div>
-          <div class="login-form-action clearfix">
-            <button type="submit" value="OK" class="btn btn-success pull-right green-btn">
-              Ingresar <i class="icon-chevron-right"></i>
-            </button>
-          </div>
-        </form>
-      </div>
+    <div class="row m-0 h-100 overflow-hidden">
+        <div class="col p-0 text-center d-flex justify-content-center align-items-center display-none">
+            <img src="img/logo.jpg" class="w-100">
+        </div>
+        <div class="col p-0 bg-custom d-flex justify-content-center align-items-center flex-column w-100">
+            <form class="w-75" name="login" action="$(link-login-only)" method="post"
+            $(if chap-id) onSubmit="return doLogin()" $(endif)>
+              <input type="hidden" name="dst" value="$(link-orig)" />
+              <input type="hidden" name="popup" value="true" />
+                <div class="d-none d-sm-block d-md-none col p-0 text-center d-flex justify-content-center align-items-center">
+                    <img src="img/logo.jpg" class="w-75">
+                </div>
+                <div class="mt-3 mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Usuario" required name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput2" class="form-label">Contraseña</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Contraseña" required name="password">
+                </div>
+                
+                <button type="submit" value="OK" class="btn btn-custom btn-lg btn-block mt-3">Ingresar</button>
+            </form>
+        </div>
     </div>
-  </section>
-  <script src="js/jquery-1.9.1.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/respond.src.js"></script>
-  <script src="js/jquery.icheck.js"></script>
-  <script src="js/placeholders.min.js"></script>
-  <script src="js/waypoints.min.js"></script>
-  <script src="js/jquery.panelSnap.js"></script>
-  <script type="text/javascript">
-  $(function () {
-    $("input").iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      increaseArea: '20%' // optional
-    });
-    $(".dark input").iCheck({
-      checkboxClass: 'icheckbox_polaris',
-      increaseArea: '20%' // optional
-    });
-    $(".form-control").focus(function () {
-      $(this).closest(".textbox-wrap").addClass("focused");
-    }).blur(function () {
-      $(this).closest(".textbox-wrap").removeClass("focused");
-    });
-    //On Scroll Animations
-    if ($(window).width() >= 968 && !Modernizr.touch && Modernizr.cssanimations) {
-      $("body").addClass("scroll-animations-activated");
-      $('[data-animation-delay]').each(function () {
-        var animationDelay = $(this).data("animation-delay");
-        $(this).css({
-          "-webkit-animation-delay": animationDelay,
-          "-moz-animation-delay": animationDelay,
-          "-o-animation-delay": animationDelay,
-          "-ms-animation-delay": animationDelay,
-          "animation-delay": animationDelay
-        });
-      });
-      $('[data-animation]').waypoint(function (direction) {
-        if (direction == "down") {
-          $(this).addClass("animated " + $(this).data("animation"));
-        }
-      },
-      {
-        offset: '90%'
-      }).waypoint(function (direction) {
-        if (direction == "up") {
-          $(this).removeClass("animated " + $(this).data("animation"));
-        }
-      },
-      {
-        offset: $(window).height() + 1
-      });
-    }
-    //End On Scroll Animations
-    $(".main-nav a[href]").click(function () {
-      var scrollElm = $(this).attr("href");
-      $("html,body").animate({ scrollTop: $(scrollElm).offset().top }, 500);
-      $(".main-nav a[href]").removeClass("active");
-      $(this).addClass("active");
-    });
-    if ($(window).width() > 1000 && !Modernizr.touch) {
-      var options = {
-        $menu: ".main-nav",
-        menuSelector: 'a',
-        panelSelector: 'section',
-        namespace: '.panelSnap',
-        onSnapStart: function () { },
-        onSnapFinish: function ($target) {
-          $target.find('input:first').focus();
-        },
-        directionThreshold: 50,
-        slideSpeed: 200
-      };
-      $('body').panelSnap(options);
-    }
-    $(".colorBg a[href]").click(function () {
-      var scrollElm = $(this).attr("href");
-      $("html,body").animate({ scrollTop: $(scrollElm).offset().top }, 500);
-      return false;
-    });
-  });
-  </script>
 </body>
+
 </html>
